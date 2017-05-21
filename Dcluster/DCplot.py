@@ -38,7 +38,7 @@ def DCplot(dist, XY, ND, rho, delta,ordrho,dc,nneigh, rhomin,deltamin):
         if event.xdata != None and event.ydata != None:
             rhomin = event.xdata
             deltamin = event.ydata
-            print('Cutoff: (min_rho, min_delta): (%.2f, %.2f)' %(rhomin,deltamin))
+            print(('Cutoff: (min_rho, min_delta): (%.2f, %.2f)' %(rhomin,deltamin)))
             NCLUST = 0
             cl = np.zeros(ND)-1
             # 1000 is the max number of clusters
@@ -49,7 +49,7 @@ def DCplot(dist, XY, ND, rho, delta,ordrho,dc,nneigh, rhomin,deltamin):
                     icl[NCLUST] = i
                     NCLUST = NCLUST+1
 
-            print('NUMBER OF CLUSTERS: %i'%(NCLUST))
+            print(('NUMBER OF CLUSTERS: %i'%(NCLUST)))
             print('Performing assignation')
             # assignation
             for i in range(ND):
@@ -84,7 +84,7 @@ def DCplot(dist, XY, ND, rho, delta,ordrho,dc,nneigh, rhomin,deltamin):
                         nc = nc+1
                     if halo[j]==i:
                         nh = nh+1
-                print('CLUSTER: %i CENTER: %i ELEMENTS: %i CORE: %i HALO: %i'%( i+1,icl[i]+1,nc,nh,nc-nh))
+                print(('CLUSTER: %i CENTER: %i ELEMENTS: %i CORE: %i HALO: %i'%( i+1,icl[i]+1,nc,nh,nc-nh)))
             # print , start from 1
 
             ## save CLUSTER_ASSIGNATION
@@ -94,7 +94,7 @@ def DCplot(dist, XY, ND, rho, delta,ordrho,dc,nneigh, rhomin,deltamin):
             print('column 3:cluster assignation with halo control')
             clusters = np.array([np.arange(ND)+1,cl+1,halo+1]).T
             np.savetxt('CLUSTER_ASSIGNATION_%.2f_%.2f_.txt'%(rhomin,deltamin),clusters,fmt='%d\t%d\t%d')
-            print('Result are saved in file CLUSTER_ASSIGNATION_%.2f_%.2f_.txt'%(rhomin,deltamin))
+            print(('Result are saved in file CLUSTER_ASSIGNATION_%.2f_%.2f_.txt'%(rhomin,deltamin)))
             print('\n\nDrag the mouse pointer at a cutoff position in figure DECISION GRAPH and press   OR   Press key n to quit')
             ################# plot the data points with cluster labels
             cmap = cm.rainbow(np.linspace(0, 1, NCLUST))
@@ -107,7 +107,7 @@ def DCplot(dist, XY, ND, rho, delta,ordrho,dc,nneigh, rhomin,deltamin):
         print('\n\nDrag the mouse pointer at a cutoff position in figure DECISION GRAPH and press   OR   Press key n to quit')
         cid = f.canvas.mpl_connect('button_press_event', onclick)
         f.show()
-        nID = input()
+        nID = eval(input())
         if nID=='n':
             f.canvas.mpl_disconnect(cid)
             print('Saving the figure in file CLUSTER_ASSIGNATION.png')

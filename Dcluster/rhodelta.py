@@ -8,12 +8,12 @@ def rhodelta(dist, xxdist, ND, N, percent = 2.0):
     Return (rho,delta,ordrho)
     '''
     print('Caculating rho and delta...')
-    print('average percentage of neighbours (hard coded): %5.6f'%(percent) )
+    print(('average percentage of neighbours (hard coded): %5.6f'%(percent) ))
 
     position = round(N*percent/100)
     sda=np.sort(xxdist)
     dc=sda[position]
-    print('Computing Rho with gaussian kernel of radius: %12.6f\n'%(dc))
+    print(('Computing Rho with gaussian kernel of radius: %12.6f\n'%(dc)))
 
     rho = np.zeros(ND)
     # Gaussian kernel
